@@ -33,7 +33,6 @@ namespace StateTeht
 
         public interface State
         {
-            void Evolve(Pokemon pokemon);
             void Attack();
             void Rest();
             void Fly();
@@ -42,10 +41,6 @@ namespace StateTeht
 
         public class Charmander : State
         {
-            public void Evolve(Pokemon pokemon)
-            {
-                pokemon.SetState(new Charmeleon());
-            }
             public void Attack() 
             {
                 Console.WriteLine("Charmander uses ignite");
@@ -65,10 +60,6 @@ namespace StateTeht
 
         public class Charmeleon : State
         {
-            public void Evolve(Pokemon pokemon)
-            {
-                pokemon.SetState(new Charizard());
-            }
             public void Attack()
             {
                 Console.WriteLine("Charmeleon uses fireball");
@@ -91,18 +82,15 @@ namespace StateTeht
 
         public class Charizard : State
         {
-            public void Evolve(Pokemon pokemon)
+            public void Attack()
             {
+                Console.WriteLine("Charizard uses fireblast");
                 Console.WriteLine("Max evolve");
                 xp++;
                 if (xp == 9)
                 {
                     Console.WriteLine("Charizard cant evolve anymore."); ;
                 }
-            }
-            public void Attack()
-            {
-                Console.WriteLine("Charizard uses fireblast");
             }
             public void Rest()
             {
